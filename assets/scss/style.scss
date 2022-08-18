@@ -10,7 +10,7 @@ body {
     ;
     header {
         grid-area: header;
-        div {
+        #searchBar {
             display: flex;
             justify-content: center;
             //#menuBurger {}
@@ -24,6 +24,16 @@ body {
                 color: #7E7E7E;
                 font-family: 'Rubik', sans-serif;
                 font-weight: 300;
+            }
+            #divCountry {
+                background-color: white;
+                width: 87%;
+                position: absolute;
+                top: 52px;
+               display: none;
+                ul {
+                    li {}
+                }
             }
         }
         nav {
@@ -94,7 +104,6 @@ body {
             color: white;
             font-family: 'Rubik', sans-serif;
             font-weight: 300;
-            img {}
             p:nth-child(2) {
                 margin-top: 5px;
                 margin-bottom: 5px;

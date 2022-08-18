@@ -8,11 +8,11 @@ body {
 body header {
   grid-area: header;
 }
-body header div {
+body header #searchBar {
   display: flex;
   justify-content: center;
 }
-body header div #searchLocation {
+body header #searchBar #searchLocation {
   margin: 20px;
   padding: 7px;
   width: 90%;
@@ -21,6 +21,13 @@ body header div #searchLocation {
   color: #7E7E7E;
   font-family: "Rubik", sans-serif;
   font-weight: 300;
+}
+body header #searchBar #divCountry {
+  background-color: white;
+  width: 87%;
+  position: absolute;
+  top: 52px;
+  display: none;
 }
 body header nav {
   display: flex;
