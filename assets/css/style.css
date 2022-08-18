@@ -2,7 +2,7 @@ body {
   background-color: #7E7E7E;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 4fr 2fr;
+  grid-template-rows: 1fr 4fr 1fr;
   grid-template-areas: "header" "main" "footer";
 }
 body header {
@@ -22,6 +22,19 @@ body header div #searchLocation {
   font-family: "Rubik", sans-serif;
   font-weight: 300;
 }
+body header nav {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+}
+body header nav .nav {
+  color: white;
+}
+body header nav .nav:hover {
+  cursor: pointer;
+}
 body main {
   grid-area: main;
   display: flex;
@@ -33,32 +46,30 @@ body main section {
   text-align: center;
   font-family: "Rubik", sans-serif;
 }
-body main section .town {
+body main section #town {
   font-weight: 600;
   font-size: 38px;
 }
-body main section .date {
+body main section #date {
   margin-top: 15px;
   margin-bottom: 30px;
   font-weight: 400;
   font-size: 18px;
 }
-body main section .degree {
+body main section #degree {
   font-weight: 600;
   font-size: 55px;
 }
-body main section p {
+body main section #icon {
   margin-top: 30px;
-  margin-bottom: 25px;
-  font-weight: 400;
-  font-size: 38px;
+  margin-bottom: 10px;
 }
-body main section .wheater {
+body main section #wheater {
   font-weight: 600;
   color: white;
   font-size: 16px;
 }
-body main section .min-max {
+body main section #min-max {
   margin-top: 15px;
   font-weight: 400;
   color: white;
@@ -66,4 +77,16 @@ body main section .min-max {
 }
 body footer {
   grid-area: footer;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+body footer .forcast {
+  color: white;
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+}
+body footer .forcast p:nth-child(2) {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
