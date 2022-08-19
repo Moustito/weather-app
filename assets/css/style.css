@@ -1,5 +1,7 @@
 body {
-  background-color: #7E7E7E;
+  background-size: cover;
+  background-position: center;
+  background-color: #7e7e7e;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 4fr 1fr;
@@ -18,16 +20,32 @@ body header #searchBar #searchLocation {
   width: 90%;
   border: 0;
   border-radius: 3px 3px 0px 3px;
-  color: #7E7E7E;
+  color: #7e7e7e;
   font-family: "Rubik", sans-serif;
   font-weight: 300;
 }
 body header #searchBar #divCountry {
   background-color: white;
-  width: 87%;
+  width: 88%;
   position: absolute;
   top: 52px;
   display: none;
+  color: #7e7e7e;
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+}
+body header #searchBar #divCountry #countryList {
+  max-height: 140px;
+  overflow: scroll;
+}
+body header #searchBar #divCountry #countryList li {
+  padding: 5px;
+  border: #7e7e7e solid 1px;
+}
+body header #searchBar #divCountry #countryList li:hover {
+  cursor: pointer;
+  background-color: #afafaf;
+  color: white;
 }
 body header nav {
   display: flex;
@@ -52,6 +70,8 @@ body main {
 body main section {
   text-align: center;
   font-family: "Rubik", sans-serif;
+  background-color: #afafaf;
+  padding: 10px;
 }
 body main section #town {
   font-weight: 600;
@@ -92,6 +112,7 @@ body footer .forcast {
   color: white;
   font-family: "Rubik", sans-serif;
   font-weight: 300;
+  font-size: 12px;
 }
 body footer .forcast p:nth-child(2) {
   margin-top: 5px;

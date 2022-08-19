@@ -1,116 +1,139 @@
 body {
-    background-color: #7E7E7E;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 4fr 1fr;
-    grid-template-areas: 
+    background-size: cover;
+    background-position: center;
+  background-color: #7e7e7e;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-areas:
     "header"
     "main"
-    "footer"
-    ;
-    header {
-        grid-area: header;
-        #searchBar {
-            display: flex;
-            justify-content: center;
-            //#menuBurger {}
-            #searchLocation {
-                margin: 20px;
-                padding: 7px;
-                width: 90%;
-                border: 0;
-                border-radius: 3px 3px 0px 3px;
+    "footer";
+  header {
+    grid-area: header;
+    #searchBar {
+      display: flex;
+      justify-content: center;
+      //#menuBurger {}
+      #searchLocation {
+        margin: 20px;
+        padding: 7px;
+        width: 90%;
+        border: 0;
+        border-radius: 3px 3px 0px 3px;
 
-                color: #7E7E7E;
-                font-family: 'Rubik', sans-serif;
-                font-weight: 300;
-            }
-            #divCountry {
-                background-color: white;
-                width: 87%;
-                position: absolute;
-                top: 52px;
-               display: none;
-                ul {
-                    li {}
-                }
-            }
-        }
-        nav {
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-
-            font-family: 'Rubik', sans-serif;
-            font-weight: 300;
-            .nav {
-                color: white;
-            }
-            .nav:hover {
-                cursor: pointer;
-            }
-            #positionWheater {}
-            #worldWheater {}
-        }
-    }
-    main {
-        grid-area: main;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        section {
-            text-align: center;
-            font-family: 'Rubik', sans-serif;
-            #town {
-                font-weight: 600;
-                font-size: 38px;
-            }
-            #date {
-                margin-top: 15px;
-                margin-bottom: 30px;
-
-                font-weight: 400;
-                font-size: 18px;
-            }
-            #degree {
-                font-weight: 600;
-                font-size: 55px;
-            }
-            #icon {
-                margin-top: 30px;
-                margin-bottom: 10px;
-            }
-            #wheater {
-                font-weight: 600;
-                color: white;
-                font-size: 16px;
-            }
-            #min-max {
-                margin-top: 15px;
-
-                font-weight: 400;
-                color: white;
-                font-size: 16px;
-            }
-        }
-    }
-    footer {
-        grid-area: footer;
-        display: flex;
-        justify-content: space-around;
-        text-align: center;
-        .forcast {
+        color: #7e7e7e;
+        font-family: "Rubik", sans-serif;
+        font-weight: 300;
+      }
+      #divCountry {
+        background-color: white;
+        width: 88%;
+        position: absolute;
+        top: 52px;
+        display: none;
+        color: #7e7e7e;
+        font-family: "Rubik", sans-serif;
+        font-weight: 300;
+        #countryList {
+            max-height: 140px;
+            overflow: scroll;
+          li {
+            padding: 5px;
+            border: #7e7e7e solid 1px;
+          }
+          li:hover {
+            cursor: pointer;
+            background-color: #afafaf;
             color: white;
-            font-family: 'Rubik', sans-serif;
-            font-weight: 300;
-            p:nth-child(2) {
-                margin-top: 5px;
-                margin-bottom: 5px;
-            }
+          }
         }
-        .one {}
-        .two {}
-        .three {}
+      }
     }
+    nav {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+
+      font-family: "Rubik", sans-serif;
+      font-weight: 300;
+      .nav {
+        color: white;
+      }
+      .nav:hover {
+        cursor: pointer;
+      }
+      #positionWheater {
+      }
+      #worldWheater {
+      }
+    }
+  }
+  main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    section {
+      text-align: center;
+      font-family: "Rubik", sans-serif;
+
+      background-color: #afafaf;
+      padding: 10px;
+      #town {
+        font-weight: 600;
+        font-size: 38px;
+      }
+      #date {
+        margin-top: 15px;
+        margin-bottom: 30px;
+
+        font-weight: 400;
+        font-size: 18px;
+      }
+      #degree {
+        font-weight: 600;
+        font-size: 55px;
+      }
+      #icon {
+        margin-top: 30px;
+        margin-bottom: 10px;
+      }
+      #wheater {
+        font-weight: 600;
+        color: white;
+        font-size: 16px;
+      }
+      #min-max {
+        margin-top: 15px;
+
+        font-weight: 400;
+        color: white;
+        font-size: 16px;
+      }
+    }
+  }
+  footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    .forcast {
+      color: white;
+      font-family: "Rubik", sans-serif;
+      font-weight: 300;
+      font-size: 12px;
+      p:nth-child(2) {
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+    }
+    .one {
+    }
+    .two {
+    }
+    .three {
+    }
+  }
 }
