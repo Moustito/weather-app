@@ -8,12 +8,11 @@ jours = new Array(
   "Vendredi",
   "Samedi"
 );
-let tomorow = date.getDay()+7
+let tomorow = date.getDay()+1
 
 let clickText = "";
 
 async function displayWheater() {
-  console.log(clickText);
   try {
     const response = await fetch(
       "http://api.openweathermap.org/data/2.5/forecast?q=" +
@@ -37,10 +36,12 @@ async function displayWheater() {
 
     // FOOTER
     for (let i = 0; i < 3; i++) {
+      const results = data.list.filter(item => new Date(item.dt_txt).getDate() !==  date.getDate() && new Date(item.dt_txt).getHours() === 9);
+      console.log(results);
       let forcast__img = document.getElementById("forcast__img" + i);
-      forcast__img.src = `assets/images/icon/${data.list[i].weather[0].main}.png`;
-      document.getElementById("forcast__img" + [i]).alt =data.list[i].weather[0].main;
-      document.getElementById("forcast__minMax"+i).innerHTML =data.list[i].main.temp_max + "/" + data.list[i].main.temp_min + "°C";
+      forcast__img.src = `assets/images/icon/${results[i].weather[0].main}.png`;
+      document.getElementById("forcast__img" + [i]).alt =results[i].weather[0].main;
+      document.getElementById("forcast__minMax"+i).innerHTML =results[i].main.temp_max + "/" + results[i].main.temp_min + "°C";
       document.getElementById("forcast__day"+i).innerHTML = jours[tomorow + i];
     }
   } catch (error) {
@@ -74,8 +75,6 @@ function displayForcastWheater() {
     footer__div__day.id = "forcast__day" + [i];
   }
 }
-
-// displayForcastWheater()
 
 let dataArray = [];
 
@@ -127,7 +126,8 @@ document.getElementById("countryList").addEventListener("click", (event) => {
   const words = event.target.textContent.split(" ");
   clickText = words[0];
   document.getElementById("divCountry").style.display = "none";
-
+  document.getElementById("main__section").style.display = "block";
+  document.getElementById("footer__forcast").style.display = "block";
   displayWheater();
   displayphoto();
   searchLocation.value = "";
@@ -137,9 +137,8 @@ document.getElementById("countryList").addEventListener("click", (event) => {
 
 
 async function displayphoto() {
-  console.log(clickText);
   try {
-    const response = await fetch("https://api.unsplash.com/photos/random?query="+clickText+"-city"+"&client_id=MQo0FbNdtKznD1F3GbdvBQ5NbxCXu2_UaGYzuiPdNaI");
+    const response = await fetch("https://api.unsplash.com/photos/random?query="+clickText+"&client_id=MQo0FbNdtKznD1F3GbdvBQ5NbxCXu2_UaGYzuiPdNaI");
     const data = await response.json();
     console.log(data.urls.raw);
     document.body.style.backgroundImage = "url('"+data.urls.raw+"')";
@@ -147,3 +146,11 @@ async function displayphoto() {
     console.log(error);
   }
 }
+
+document.getElementById("worldWheater").addEventListener("click", (event) => {
+  document.getElementById("historic").style.display = "block";
+});
+
+document.getElementById("positionWheater").addEventListener("click", (event) => {
+  document.getElementById("historic").style.display = "none";
+});

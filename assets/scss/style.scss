@@ -1,6 +1,6 @@
 body {
-    background-size: cover;
-    background-position: center;
+  background-size: cover;
+  background-position: center;
   background-color: #7e7e7e;
   display: grid;
   grid-template-columns: 1fr;
@@ -36,8 +36,8 @@ body {
         font-family: "Rubik", sans-serif;
         font-weight: 300;
         #countryList {
-            max-height: 140px;
-            overflow: scroll;
+          max-height: 140px;
+          overflow: scroll;
           li {
             padding: 5px;
             border: #7e7e7e solid 1px;
@@ -59,13 +59,27 @@ body {
       font-weight: 300;
       .nav {
         color: white;
+        background-color: #afafaf;
+        padding: 10px;
+        border-radius: 20px;
       }
       .nav:hover {
         cursor: pointer;
+        background-color: white;
+        color: #afafaf;
       }
       #positionWheater {
       }
       #worldWheater {
+      }
+      div {
+        position: absolute;
+        align-items: center;
+        margin-top: 50px;
+        width: 90%;
+        height: 81%;
+        background-color: #afafaf;
+        display: none;
       }
     }
   }
@@ -76,9 +90,12 @@ body {
     align-items: center;
     justify-content: center;
     section {
+      display: none;
+
       text-align: center;
       font-family: "Rubik", sans-serif;
 
+      border-radius: 20px;
       background-color: #afafaf;
       padding: 10px;
       #town {
@@ -116,24 +133,32 @@ body {
   }
   footer {
     grid-area: footer;
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    .forcast {
-      color: white;
-      font-family: "Rubik", sans-serif;
-      font-weight: 300;
-      font-size: 12px;
-      p:nth-child(2) {
-        margin-top: 5px;
-        margin-bottom: 5px;
+    display: none;
+    section {
+      display: none;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      .forcast {
+        color: white;
+        font-family: "Rubik", sans-serif;
+        font-weight: 300;
+        font-size: 12px;
+        background-color: #afafaf;
+        padding: 5px;
+        margin-bottom: 50px;
+        border-radius: 10px;
+        p:nth-child(2) {
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
       }
-    }
-    .one {
-    }
-    .two {
-    }
-    .three {
+      .one {
+      }
+      .two {
+      }
+      .three {
+      }
     }
   }
 }

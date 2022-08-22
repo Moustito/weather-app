@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/script.js" defer></script>
@@ -15,44 +18,50 @@
   <body>
     <header>
       <div id="searchBar">
-        <input id="searchLocation" type="text" placeholder="Search Location..."/>
+        <input
+          id="searchLocation"
+          type="text"
+          placeholder="Search Location..."
+        />
         <div id="divCountry">
-          <ul id="countryList">
-          </ul>
+          <ul id="countryList"></ul>
         </div>
       </div>
       <nav>
         <p class="nav" id="positionWheater">Location</p>
         <p class="nav" id="worldWheater">world</p>
+        <div id="historic">hello</div>
       </nav>
     </header>
 
     <main>
-      <section>
+      <section id="main__section">
         <h1 id="town"></h1>
         <h3 id="date"></h3>
         <h2 id="degree"></h2>
-        <img id="icon" src="" alt="">
+        <img id="icon" src="" alt="" />
         <h3 id="wheater"></h3>
         <h3 id="min-max"></h3>
       </section>
     </main>
-    <footer>
+    <footer id="footer__forcast">
+      <section>
         <div class="forcast">
-            <img id="forcast__img0" src="" alt="">
-            <p id="forcast__minMax0"></p>
-            <p id="forcast__day0"></p>
+          <img id="forcast__img0" src="" alt="" />
+          <p id="forcast__minMax0"></p>
+          <p id="forcast__day0"></p>
         </div>
         <div class="forcast">
-          <img id="forcast__img1" src="" alt="">
+          <img id="forcast__img1" src="" alt="" />
           <p id="forcast__minMax1"></p>
           <p id="forcast__day1"></p>
-      </div>
-      <div class="forcast">
-        <img id="forcast__img2" src="" alt="">
-        <p id="forcast__minMax2"></p>
-        <p id="forcast__day2"></p>
-    </div>
+        </div>
+        <div class="forcast">
+          <img id="forcast__img2" src="" alt="" />
+          <p id="forcast__minMax2"></p>
+          <p id="forcast__day2"></p>
+        </div>
+      </section>
     </footer>
   </body>
 </html>

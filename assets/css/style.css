@@ -56,9 +56,23 @@ body header nav {
 }
 body header nav .nav {
   color: white;
+  background-color: #afafaf;
+  padding: 10px;
+  border-radius: 20px;
 }
 body header nav .nav:hover {
   cursor: pointer;
+  background-color: white;
+  color: #afafaf;
+}
+body header nav div {
+  position: absolute;
+  align-items: center;
+  margin-top: 50px;
+  width: 90%;
+  height: 81%;
+  background-color: #afafaf;
+  display: none;
 }
 body main {
   grid-area: main;
@@ -68,8 +82,10 @@ body main {
   justify-content: center;
 }
 body main section {
+  display: none;
   text-align: center;
   font-family: "Rubik", sans-serif;
+  border-radius: 20px;
   background-color: #afafaf;
   padding: 10px;
 }
@@ -104,17 +120,25 @@ body main section #min-max {
 }
 body footer {
   grid-area: footer;
+  display: none;
+}
+body footer section {
+  display: none;
   display: flex;
   justify-content: space-around;
   text-align: center;
 }
-body footer .forcast {
+body footer section .forcast {
   color: white;
   font-family: "Rubik", sans-serif;
   font-weight: 300;
   font-size: 12px;
+  background-color: #afafaf;
+  padding: 5px;
+  margin-bottom: 50px;
+  border-radius: 10px;
 }
-body footer .forcast p:nth-child(2) {
+body footer section .forcast p:nth-child(2) {
   margin-top: 5px;
   margin-bottom: 5px;
 }
