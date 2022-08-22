@@ -15,7 +15,7 @@ let clickText = "";
 async function displayWheater() {
   try {
     const response = await fetch(
-      "http://api.openweathermap.org/data/2.5/forecast?q=" +
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
         clickText +
         "&units=metric&appid=80131affd762f69e36c099cae83e779f"
     );
