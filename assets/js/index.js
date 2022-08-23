@@ -1,6 +1,5 @@
-/**variables use to display the day of the following week */
-let date = new Date();
-jours = new Array(
+import{date} from "./module/day.js"
+let jours = new Array(
   "Dimanche",
   "Lundi",
   "Mardi",
@@ -15,6 +14,7 @@ let clickText = "";
 let dataArray = [];
 
 async function addWheaterApi() {
+  console.log('try');
   try {
     const response = await fetch(
       "https://api.openweathermap.org/data/2.5/forecast?q=" +
@@ -25,7 +25,7 @@ async function addWheaterApi() {
 
     displayDataTodayWheater(data);
     displayDataForcastWheater(data);
-
+      console.log('data');
   } catch (error) {
     console.log(error);
   }
@@ -68,6 +68,7 @@ function displayDataForcastWheater(data) {
     document.getElementById("forcast__minMax" + i).innerHTML =
       results[i].main.temp_max + "/" + results[i].main.temp_min + "°C";
     document.getElementById("forcast__day" + i).innerHTML = jours[tomorow + i];
+    console.log(jours);
   }
 }
 
@@ -104,13 +105,16 @@ function displayForcastWheater() {
 
 async function addNameCityApi() {
   try {
+    console.log(searchLocation.value);
     const response = await fetch(
       "https://api.teleport.org/api/cities/?search=" + searchLocation.value
     );
     const data = await response.json();
     displayNumberCityNameList(data);
     displayMenuAutocomplete();
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 /**
@@ -127,6 +131,7 @@ function displayNumberCityNameList(data) {
 
 function displayMenuAutocomplete() {
   let countryList = document.getElementById("countryList");
+  console.log(dataArray);
   for (element of dataArray) {
     let country = document.createElement("li");
     countryList.appendChild(country);
@@ -151,7 +156,6 @@ async function addBackgroundImageApi() {
         "&client_id=MQo0FbNdtKznD1F3GbdvBQ5NbxCXu2_UaGYzuiPdNaI"
     );
     const data = await response.json();
-    console.log(data.urls.raw);
     document.body.style.backgroundImage = "url('" + data.urls.raw + "')";
   } catch (error) {
     console.log(error);
@@ -161,6 +165,7 @@ async function addBackgroundImageApi() {
 function setAddEventListener() {
 
   searchLocation.addEventListener("keyup", (event) => {
+    console.log('event');
     dataArray = [];
     addNameCityApi();
     removeMenuAutocomplete();
