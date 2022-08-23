@@ -1,20 +1,10 @@
-import{date} from "./module/day.js"
-let jours = new Array(
-  "Dimanche",
-  "Lundi",
-  "Mardi",
-  "Mercredi",
-  "Jeudi",
-  "Vendredi",
-  "Samedi"
-);
-let tomorow = date.getDay() + 1;
+import{date, jours, tomorow } from "./module/day.js"
+
 /**empty variable waiting for a city name */
 let clickText = "";
 let dataArray = [];
 
 async function addWheaterApi() {
-  console.log('try');
   try {
     const response = await fetch(
       "https://api.openweathermap.org/data/2.5/forecast?q=" +
@@ -25,7 +15,6 @@ async function addWheaterApi() {
 
     displayDataTodayWheater(data);
     displayDataForcastWheater(data);
-      console.log('data');
   } catch (error) {
     console.log(error);
   }
@@ -68,7 +57,6 @@ function displayDataForcastWheater(data) {
     document.getElementById("forcast__minMax" + i).innerHTML =
       results[i].main.temp_max + "/" + results[i].main.temp_min + "°C";
     document.getElementById("forcast__day" + i).innerHTML = jours[tomorow + i];
-    console.log(jours);
   }
 }
 
@@ -105,7 +93,6 @@ function displayForcastWheater() {
 
 async function addNameCityApi() {
   try {
-    console.log(searchLocation.value);
     const response = await fetch(
       "https://api.teleport.org/api/cities/?search=" + searchLocation.value
     );
@@ -131,8 +118,7 @@ function displayNumberCityNameList(data) {
 
 function displayMenuAutocomplete() {
   let countryList = document.getElementById("countryList");
-  console.log(dataArray);
-  for (element of dataArray) {
+  for (let element of dataArray) {
     let country = document.createElement("li");
     countryList.appendChild(country);
     let countryText = document.createTextNode(element);
@@ -143,7 +129,7 @@ function displayMenuAutocomplete() {
 
 function removeMenuAutocomplete() {
   let country = document.querySelectorAll("li");
-  for (element of country) {
+  for (let element of country) {
     element.remove();
   }
 }
@@ -165,7 +151,6 @@ async function addBackgroundImageApi() {
 function setAddEventListener() {
 
   searchLocation.addEventListener("keyup", (event) => {
-    console.log('event');
     dataArray = [];
     addNameCityApi();
     removeMenuAutocomplete();
