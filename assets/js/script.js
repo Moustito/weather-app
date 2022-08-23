@@ -1,3 +1,4 @@
+/**variables use to display the day of the following week */
 let date = new Date();
 jours = new Array(
   "Dimanche",
@@ -8,11 +9,12 @@ jours = new Array(
   "Vendredi",
   "Samedi"
 );
-let tomorow = date.getDay()+1
-
+let tomorow = date.getDay() + 1;
+/**empty variable waiting for a city name */
 let clickText = "";
+let dataArray = [];
 
-async function displayWheater() {
+async function addWheaterApi() {
   try {
     const response = await fetch(
       "https://api.openweathermap.org/data/2.5/forecast?q=" +
@@ -21,34 +23,58 @@ async function displayWheater() {
     );
     const data = await response.json();
 
-    // MAIN
-    document.getElementById("town").innerHTML = data.city.name;
-    document.getElementById("date").innerHTML = data.list[0].dt_txt;
-    document.getElementById("degree").innerHTML = data.list[0].main.temp + "°c";
-    document.getElementById("wheater").innerHTML =
-      data.list[0].weather[0].description;
-    document.getElementById("min-max").innerHTML =
-      data.list[0].main.temp_max + "/" + data.list[0].main.temp_min + "°C";
-    let iconWeather = document.getElementById("icon");
-    iconWeather.src =
-      "assets/images/icon/" + data.list[0].weather[0].main + ".png";
-    document.getElementById("icon").alt = data.list[0].weather[0].main;
+    displayDataTodayWheater(data);
+    displayDataForcastWheater(data);
 
-    // FOOTER
-    for (let i = 0; i < 3; i++) {
-      const results = data.list.filter(item => new Date(item.dt_txt).getDate() !==  date.getDate() && new Date(item.dt_txt).getHours() === 9);
-      console.log(results);
-      let forcast__img = document.getElementById("forcast__img" + i);
-      forcast__img.src = `assets/images/icon/${results[i].weather[0].main}.png`;
-      document.getElementById("forcast__img" + [i]).alt =results[i].weather[0].main;
-      document.getElementById("forcast__minMax"+i).innerHTML =results[i].main.temp_max + "/" + results[i].main.temp_min + "°C";
-      document.getElementById("forcast__day"+i).innerHTML = jours[tomorow + i];
-    }
   } catch (error) {
     console.log(error);
   }
 }
 
+/**
+ * displays the day’s information from wheater map 
+ * here data = the information of the API
+*/
+function displayDataTodayWheater(data) {
+  document.getElementById("town").innerHTML = data.city.name;
+  document.getElementById("date").innerHTML = data.list[0].dt_txt;
+  document.getElementById("degree").innerHTML = data.list[0].main.temp + "°c";
+  document.getElementById("wheater").innerHTML =
+    data.list[0].weather[0].description;
+  document.getElementById("min-max").innerHTML =
+    data.list[0].main.temp_max + "/" + data.list[0].main.temp_min + "°C";
+  let iconWeather = document.getElementById("icon");
+  iconWeather.src =
+    "assets/images/icon/" + data.list[0].weather[0].main + ".png";
+  document.getElementById("icon").alt = data.list[0].weather[0].main;
+}
+
+/**
+ * displays the forcast day’s information from wheater map 
+ * here data = the information of the API
+ * @param {*} data 
+*/
+function displayDataForcastWheater(data) {
+  for (let i = 0; i < 3; i++) {
+    const results = data.list.filter(
+      (item) =>
+        new Date(item.dt_txt).getDate() !== date.getDate() &&
+        new Date(item.dt_txt).getHours() === 9
+    );
+    let forcast__img = document.getElementById("forcast__img" + i);
+    forcast__img.src = `assets/images/icon/${results[i].weather[0].main}.png`;
+    document.getElementById("forcast__img" + [i]).alt =
+      results[i].weather[0].main;
+    document.getElementById("forcast__minMax" + i).innerHTML =
+      results[i].main.temp_max + "/" + results[i].main.temp_min + "°C";
+    document.getElementById("forcast__day" + i).innerHTML = jours[tomorow + i];
+  }
+}
+
+/**
+ * display the dom of the forcast's days in the footer
+ * 3 = number of next days display in footer 
+*/
 function displayForcastWheater() {
   for (let i = 0; i < 3; i++) {
     let footer = document.querySelector("footer");
@@ -76,32 +102,27 @@ function displayForcastWheater() {
   }
 }
 
-let dataArray = [];
-
-searchLocation.addEventListener("keyup", (event) => {
-  dataArray = [];
-  fetchQuotes();
-  removeMenuAutocomplete();
-  if (event.target.value == "") {
-    document.getElementById("divCountry").style.display = "none";
-  } else {
-    document.getElementById("divCountry").style.display = "block";
-  }
-});
-
-async function fetchQuotes() {
+async function addNameCityApi() {
   try {
     const response = await fetch(
       "https://api.teleport.org/api/cities/?search=" + searchLocation.value
     );
     const data = await response.json();
-    for (let i = 0; i < 3; i++) {
-      dataArray.push(
-        data._embedded["city:search-results"][i].matching_full_name
-      );
-    }
+    displayNumberCityNameList(data);
     displayMenuAutocomplete();
   } catch (error) {}
+}
+
+/**
+ * here data is the name city from the teleport's API
+ * @param {*} data 
+ */
+function displayNumberCityNameList(data) {
+  for (let i = 0; i < 8; i++) { // 8 = number of name display in the menu 
+    dataArray.push(
+      data._embedded["city:search-results"][i].matching_full_name
+    );
+  }
 }
 
 function displayMenuAutocomplete() {
@@ -122,35 +143,53 @@ function removeMenuAutocomplete() {
   }
 }
 
-document.getElementById("countryList").addEventListener("click", (event) => {
-  const words = event.target.textContent.split(" ");
-  clickText = words[0];
-  document.getElementById("divCountry").style.display = "none";
-  document.getElementById("main__section").style.display = "block";
-  document.getElementById("footer__forcast").style.display = "block";
-  displayWheater();
-  displayphoto();
-  searchLocation.value = "";
-});
-
-// https://api.unsplash.com/photos/random?query="+ clickText +"&client_id=MQo0FbNdtKznD1F3GbdvBQ5NbxCXu2_UaGYzuiPdNaI
-
-
-async function displayphoto() {
+async function addBackgroundImageApi() {
   try {
-    const response = await fetch("https://api.unsplash.com/photos/random?query="+clickText+"&client_id=MQo0FbNdtKznD1F3GbdvBQ5NbxCXu2_UaGYzuiPdNaI");
+    const response = await fetch(
+      "https://api.unsplash.com/photos/random?query=" +
+        clickText +
+        "&client_id=MQo0FbNdtKznD1F3GbdvBQ5NbxCXu2_UaGYzuiPdNaI"
+    );
     const data = await response.json();
     console.log(data.urls.raw);
-    document.body.style.backgroundImage = "url('"+data.urls.raw+"')";
+    document.body.style.backgroundImage = "url('" + data.urls.raw + "')";
   } catch (error) {
     console.log(error);
   }
 }
 
-document.getElementById("worldWheater").addEventListener("click", (event) => {
-  document.getElementById("historic").style.display = "block";
-});
+function setAddEventListener() {
 
-document.getElementById("positionWheater").addEventListener("click", (event) => {
-  document.getElementById("historic").style.display = "none";
-});
+  searchLocation.addEventListener("keyup", (event) => {
+    dataArray = [];
+    addNameCityApi();
+    removeMenuAutocomplete();
+    if (event.target.value == "") {
+      document.getElementById("divCountry").style.display = "none";
+    } else {
+      document.getElementById("divCountry").style.display = "block";
+    }
+  });
+
+  document.getElementById("countryList").addEventListener("click", (event) => {
+    const words = event.target.textContent.split(" ");
+    clickText = words[0];
+    document.getElementById("divCountry").style.display = "none";
+    document.getElementById("main__section").style.display = "block";
+    document.getElementById("footer__forcast").style.display = "block";
+    addWheaterApi();
+    addBackgroundImageApi();
+    searchLocation.value = "";
+  });
+
+  document.getElementById("worldWheater").addEventListener("click", (event) => {
+    document.getElementById("historic").style.display = "block";
+  });
+
+  document
+    .getElementById("positionWheater")
+    .addEventListener("click", (event) => {
+      document.getElementById("historic").style.display = "none";
+    });
+}
+setAddEventListener()
