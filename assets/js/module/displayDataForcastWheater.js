@@ -13,7 +13,8 @@ export function displayDataForcastWheater(dataWheater) {
   );
 
   let footer = document.querySelector("footer");
-  footer.firstChild.remove();
+  if (footer.firstChild !== null) footer.firstChild.remove();
+
 
   let section = document.createElement("section");
 
