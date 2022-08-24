@@ -86,7 +86,7 @@ body main section {
   text-align: center;
   font-family: "Rubik", sans-serif;
   border-radius: 20px;
-  background-color: rgba(175, 174, 174, 0.6);
+  background-color: rgba(175, 174, 174, 0.8);
   padding: 10px;
 }
 body main section #town {
@@ -123,9 +123,8 @@ body footer {
   display: none;
 }
 body footer section {
-  display: none;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: center;
 }
 body footer section .forcast {
@@ -133,7 +132,7 @@ body footer section .forcast {
   font-family: "Rubik", sans-serif;
   font-weight: 300;
   font-size: 12px;
-  background-color: rgba(175, 174, 174, 0.6);
+  background-color: rgba(175, 174, 174, 0.8);
   padding: 5px;
   margin-bottom: 50px;
   border-radius: 10px;
@@ -141,4 +140,4 @@ body footer section .forcast {
 body footer section .forcast p:nth-child(2) {
   margin-top: 5px;
   margin-bottom: 5px;
-}/*# sourceMappingURL=style.css.map */
+}

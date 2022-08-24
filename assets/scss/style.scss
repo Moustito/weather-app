@@ -1,4 +1,4 @@
-$grey-opacity : rgba(175, 174, 174, 0.!);
+$grey-opacity : rgba(175, 174, 174, 0.8);
 
 body {
   background-size: cover;
@@ -137,9 +137,8 @@ body {
     grid-area: footer;
     display: none;
     section {
-      display: none;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       text-align: center;
       .forcast {
         color: white;
