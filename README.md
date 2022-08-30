@@ -14,8 +14,8 @@ L'api Wheater-app est utilisé pour la météo, Teleport pour les noms de ville 
 Prochainement, je permettrais l'affichage météo de plusieurs villes en même temps, et encore plein d'autre chose tant que j'aurais des idées.
 
 ### Comment lancer le projet en local
-- il cous faudra vous inscrire a Wheater-map et unsplash pour creer votre clef API.
-- Ensuite, placer vos clef dans le fichier assets/js/module/settigns.js.
+- Il vous faudra vous inscrire à Wheater-map et unsplash pour créer votre clef API.
+- Ensuite, placer vos clefs dans le fichier assets/js/module/settigns.js.
 
 Lien : [Consignes Becode](https://github.com/becodeorg/CRL-Wilson-1/tree/master/1.TRAIL/2.The-Hill/Projects/2.Weather-app)
 
